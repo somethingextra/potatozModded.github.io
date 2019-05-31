@@ -14,8 +14,7 @@ class Project {
         this.id = obj.id;
     }
     setup() {
-        _updateProjectCard(TESTING);
-        _updateProjectCard(wateringCans);
+        projects.push(wateringCans);
         this.set = true;
         this.$elem = $("<span>");
         this.$elem.html(`
@@ -85,6 +84,7 @@ var wateringCans = new Project({
         patchBoost = (patchBoost * 1.5).A();
         projects.push(potatonalysis);
         projects.push(bribeForPatches);
+        projects.push(TESTING);
         addMessage('"A river flows out of Eden to water the potato..." - The Potato Bible', 'quote', 'info');
     },
     canBuy: () => {
@@ -92,9 +92,9 @@ var wateringCans = new Project({
     }
 });
 var TESTING = new Project({
-    title: "TEST",
-    phrase: "this is a test",
-    description: "TESTING AHHHHHHHHHHHHHHH",
+    title: "unlock dark magic",
+    phrase: "wow thats a cool zombie",
+    description: "unlocks dark magic",
     costPhrase: "(50 creativity, 30 idea)",
     creatCost: 50,
     ideaCost: 30,

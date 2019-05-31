@@ -36,7 +36,7 @@ localStore("chaplainCatsUnlocked", false);
 localStore("battlesUnlocked", false);
 localStore("battleIntensity", 1);
 localStore("selfReflectionUnlocked", false);
-localStore("iq", 20);
+localStore("iq", 50);
 localStore("iqButton", false);
 localStore("iqCost", 10);
 localStore("thoughts", 0);
@@ -588,7 +588,7 @@ function reset() {
     chaplainCatsUnlocked = false;
     battlesUnlocked = false;
     battleIntensity = 1;
-    iq = 20;
+    iq = 50;
     iqButton = false;
     iqCost = 10;
     thoughts = 0;
@@ -661,7 +661,7 @@ function askForReset() {
         title: "Are you sure you want to reset?",
         text: `Reseting means you will lose all your progress, hours of work.
                 Upon resetting, you will recieve ${immortalCatIncreaseAmount} immortal cats.
-                Immortal cats increase the speed that potatoz and thoughts are produced at.`,
+                Immortal cats increase the speed that potatoz and thoughts are produced at. and at 100K immortal cats you can get D̸̢̳̜̲̪̲̝̯́͜ͅÀ̸̡̘͙̹̯̟̫̫̒͂R̵͓̮͇̲̤̺̹͔͂̓̀̅̓͑̕̕K̴͍̬̩̫̠̹͙̺̗̈́̈́͛ ̴̡̛̹̙̏̾̃͐̍̏̀͆K̸̥̳͕̩̞̹̯̥̀͊̑̉͝Ḯ̶͖̬̫̞̭̪̻̞͍̈́̅T̷̢̛̿͐̄̽̓͊̊̓̕T̵̥̠̦̯͕͐̊̅̾̃͐̔́͒͜͠Ý̸̡̀S̸̘̩͍̤̲̔͊̅̋͋͘͘ͅ`,
         icon: "warning",
         buttons: true,
         dangerMode: true
