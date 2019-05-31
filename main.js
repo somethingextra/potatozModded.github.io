@@ -557,7 +557,7 @@ function reset() {
     patchPrice = 20;
     patches = 0;
     patchBoost = 1;
-    patchMax = 5;
+    patchMax = 50;
     patchFertilizer = false;
     patchMultiplier = 1.2;
     farmPrice = 250000;
