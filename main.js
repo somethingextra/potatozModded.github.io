@@ -1,10 +1,10 @@
-localStore("potatoz", 250);
+localStore("potatoz", 0);
 localStore("unusedPotatoz", 0);
 localStore("doneMessages", []);
 localStore("patchPrice", 20);
 localStore("patches", 0);
 localStore("patchBoost", 1);
-localStore("patchMax", 5);
+localStore("patchMax", 50);
 localStore("patchFertilizer", false);
 localStore("patchMultiplier", 1.2);
 localStore("farmPrice", 250000);
