@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="A clicker game about potatoz.">
+    <meta name="keywords" content="Potatoes, potatoes, Potatoz, potatoes, Cats, cats, Clicker games, clicker games, Clicker Games">
+    <meta name="viewport" content="user-scalable=no" />
+    <title>Potatoz</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Potatoz <br> <h6 style="font-size: x-small;">You're a cat, producing potatoz!</h6></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item" style="border-left: 1px solid #ccc; border-right: 1px solid #ccc;">
+                    <a class="nav-link text-center" href="mailto:?subject=Play%20This%20Game&body=Check%20out%20this%20cool%20game%20I%20found%20at%20potatoz.net">
+                        <ion-icon name="mail"></ion-icon><br>Tell a friend
+                    </a>
+                </li>
+                <li class="nav-item active" style="border-right: 1px solid #ccc;">
+                    <a onclick="askForReset()" class="nav-link text-center text-danger" href="#">
+                        <ion-icon name="refresh"></ion-icon><br>Reset</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <header id="console" class="ml-1" style="height: 75px; overflow: auto;">
+
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4" style="height:500px; overflow-y: auto;">
+                <h4>Available Potatoz: <span id="unusedPotatozAmount">0</span></h4>
+                <button type="button" id="potatozPlus" class="btn btn-labeled btn-primary btn-sm">
+                    <span class="btn-label"><i class="fas fa-seedling fa-fw "></i></span>
+                    Make Potato</button>
+
+                <section id="patches">
+                    <h4>Patches: <span id="patchesAmount">0</span> / <span id="patchMax">5</span></h4>
+                    <button id="btnBuyAPatch" class="btn btn-labeled btn-primary btn-sm">
+                        <span class="btn-label"><i class="fas fa-dollar-sign fa-fw"></i></span>
+                        <span id="buyAPatch">50</span> potatoz</button>
+                </section>
+                <section id="farms" class="mt-2">
+                    <h4>Farms: <span id="farmAmount">0</span> / <span id="farmMax">2</span></h4>
+                    <button id="btnBuyAFarm" class="btn btn-labeled btn-primary btn-sm">
+                        <span class="btn-label"><i class="fas fa-dollar-sign fa-fw"></i></span>
+                        <span id="buyAFarm">200K</span> potatoz</button>
+                </section>
+                <section class="mt-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <ion-icon name="stats"></ion-icon> Potatonomics:</h5>
+                            <div id="advancedPotatonomics">
+                                <p id="pPerSec">Potatoz per sec: 0</p>
+                                <p id="patchProduces">Each patch produces: 1 per sec</p>
+                                <p id="farmProduces">Each farm produces: 1 per sec</p>
+                            </div>
+                            <p id="immortalCats">Immortal Cats: 0</p>
+                            <p>Total Potatoz Produced: <span id="potatozAmount">0</span></p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-sm-4">
+                <div>
+                    <ul class="nav nav-tabs" role="tablist" id="self-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" role="tab" id="brain-tab" data-toggle="tab" href="#one" aria-controls="brain" aria-selected="true">Your Brain</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="cats-tab" role="tab" data-toggle="tab" href="#two" aria-controls="cats" aria-selected="false">Cats</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="battles-tab" role="tab" data-toggle="tab" href="#three" aria-controls="battles" aria-selected="false">Battles</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="one" role="tabpanel" aria-labelledby="brain-tab">
+                        <section id="brain">
+                            <h4 id="iq">IQ: 20</h4>
+                            <button id="btnIncreaseIQ" class="btn btn-labeled btn-primary btn-sm">
+                                <span class="btn-label"><i class="fas fa-exchange-alt fa-fw"></i></span>
+                                <span id="increaseIQ">5</span> potatoz > 1 IQ</button>
+                            <h4 id="thoughts">Thoughts: 0 / 10B</h4>
+                            <button id="convertAll" class="btn btn-labeled btn-primary btn-sm">
+                                <span class="btn-label"><i class="fas fa-exchange-alt fa-fw"></i></span>
+                                All Thoughts > Ideas & Creativity</button>
+                            <div id="thoughtProduction">
+                                <h6 id="productionPercentDisplay">Percent allocated to production: 1%</h6>
+                                <input id="productionPercent" class="form-control-range" type="range" min="1" max="100">
+                            </div>
+                        </section>
+                        <section id="buyThoughts">
+                            <h6 id="creat">Creativity: 0</h6>
+                            <button id="buyCreat" class="btn btn-labeled btn-primary btn-sm">
+                                <span class="btn-label"><i class="fas fa-exchange-alt fa-fw"></i></span>
+                                5 thoughts > 1 creativity</button>
+                            <h6 id="ideas">Ideas: 0</h6>
+                            <button id="buyIdea" class="btn btn-labeled btn-primary btn-sm">
+                                <span class="btn-label"><i class="fas fa-exchange-alt fa-fw"></i></span>
+                                10 thoughts > 1 idea</button>
+                        </section>
+                    </div>
+                    <div class="tab-pane fade" id="two" role="tabpanel" aria-labelledby="cats-tab">
+                        <section id="cats">
+                            <section class="mb-2 mt-2">
+                                <h5><span id="catAmount">Cats: 0 / 0</span></h5>
+                                <button id="btnBuyACat" class="btn btn-primary btn-primary btn-sm">
+                                    <span class="btn-label"><i class="fas fa-dollar-sign fa-fw"></i></span>
+                                    <span id="buyACat">1M</span> potatoz</button>
+                                <button id="recallAllCats" class="btn btn-labeled btn-danger btn-sm">
+                                    <span class="btn-label"><i class="fas fa-undo fa-fw"></i></span>
+                                    Recall all</button>
+                            </section>
+                            <section id="farmerCats" class="mb-2" style="border-left: .5em solid #ccc; padding-left: .5em;">
+                                <h5 id="farmerCatAmount">Farmer Cats: 0</h5>
+                                <div class="form-inline">
+                                    <button id="assignFarmer" class="btn btn-success btn-sm"><ion-icon name="add"></ion-icon></button>
+                                    <input id="numFarmerCats" type="text" class="form-control form-control-sm ml-1 mr-1" style="width: 5em;" value="1" />
+                                    <button id="removeFarmer" class="btn btn-danger btn-sm"><ion-icon name="remove"></ion-icon></button>
+                                </div>
+                                <p id="eachBoostFarmer">Each farmer cat adds a 10% boost to potato production.</p>
+                                <h6 id="totalBoostFarmer">Total Farmer Cat Boost: 0%</h6>
+                            </section>
+                            <section id="studentCats" class="mb-2" style="border-left: .5em solid #ccc; padding-left: .5em;">
+                                <h5 id="studentCatAmount">Student Cats: 0</h5>
+                                <div class="form-inline">
+                                    <button id="assignStudent" class="btn btn-success btn-sm"><ion-icon name="add"></ion-icon></button>
+                                    <input id="numStudentCats" type="text" class="form-control form-control-sm ml-1 mr-1" style="width: 5em;" value="1" />
+                                    <button id="removeStudent" class="btn btn-danger btn-sm"><ion-icon name="remove"></ion-icon></button>
+                                </div>
+                                <p id="eachBoostStudent">Each student cat generates 0.001 IQ per second.</p>
+                                <h6 id="totalBoostStudent">Total IQ Per Second: 0</h6>
+                            </section>
+                            <section id="surveyorCats" class="mb-2" style="border-left: .5em solid #ccc; padding-left: .5em;">
+                                <h5 id="surveyorCatAmount">Surveyor Cats: 0</h5>
+                                <div class="form-inline">
+                                    <button id="assignSurveyor" class="btn btn-success btn-sm"><ion-icon name="add"></ion-icon></button>
+                                    <input id="numSurveyorCats" type="text" class="form-control form-control-sm ml-1 mr-1" style="width: 5em;" value="1" />
+                                    <button id="removeSurveyor" class="btn btn-danger btn-sm"><ion-icon name="remove"></ion-icon></button>
+                                </div>
+                                <p id="eachBoostSurveyor">Each surveyor cat generates 0.001 farm max per second.</p>
+                                <h6 id="totalBoostSurveyor">Total Farm Max Added Per Sec: 0</h6>
+                            </section>
+                        </section>
+                    </div>
+                    <div class="tab-pane fade" id="three" role="tabpanel" aria-labelledby="battles-tab">
+                        <section id="battles">
+                            <section id="soldierCats" style="border-left: .5em solid #ccc; padding-left: .5em;">
+                                <h5 id="soldierCatAmount">Soldier Cat: 0</h5>
+                                <div class="form-inline">
+                                    <button id="assignSoldier" class="btn btn-success btn-sm"><ion-icon name="add"></ion-icon></button>
+                                    <input id="numSoldierCats" type="text" class="form-control form-control-sm ml-1 mr-1" style="width: 5em;" value="1" />
+                                    <button id="removeSoldier" class="btn btn-danger btn-sm"><ion-icon name="remove"></ion-icon></button>
+                                </div>
+                                <p id="weapons">Weapons Equipped:
+
+                                </p>
+                                <section id="strategums">
+                                    <h6 id="stratCount">Strategums: 0</h6>
+                                    <button id="buyStrategum" class="btn btn-labeled btn-primary btn-sm" role="button">
+                                        <span class="btn-label"><i class="fas fa-dollar-sign fa-fw"></i></span>
+                                        1M creativity & 1M ideas</button>
+
+                                </section>
+                            </section>
+                            <section id="chaplainCats" style="border-left: .5em solid #ccc; padding-left: .5em;">
+                                <h5 id="chaplainCatAmount">Chaplian Cats: 0</h5>
+                                <div class="form-inline">
+                                    <button id="assignChaplain" class="btn btn-success btn-sm"><ion-icon name="add"></ion-icon></button>
+                                    <input id="numChaplainCats" type="text" class="form-control ml-1 mr-1" style="width: 5em;" value="1" />
+                                    <button id="removeChaplain" class="btn btn-danger btn-sm"><ion-icon name="remove"></ion-icon></button>
+                                </div>
+                                <p id="eachBoostChaplain">Each chaplain cat provides +0.0001 boost per second.</p>
+                                <h6 id="totalBoostChaplain">Total boost added per sec: 0</h6>
+                            </section>
+                            <section id="battleField">
+                                <p id="percentConquered">Percent of the World Conquered: 0%</p>
+                                <p id="battleDiff"></p>
+                                <button id="battle" class="btn btn-labeled btn-primary btn-sm" role="button">
+                                    <span class="btn-label"><i class="fas fa-tools fa-fw"></i></span>
+                                    Battle</button>
+                                <br>
+                                <br>
+                                <canvas id="canvas" width="200px" height="120px"></canvas>
+                            </section>
+                        </section>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <h4>Projects:</h4>
+                <section id="projects" style="height: 500px; overflow-y: auto;">
+
+
+                </section>
+            </div>
+        </div>
+    </div>
+    <a href="https://clustrmaps.com/site/1amtl" title="Visit tracker" hidden><img src="//www.clustrmaps.com/map_v2.png?d=ljRDZ4hpR6brBGH3RJI3_p_E4c0osI2zs-IjS4jbuuk&cl=ffffff"></a>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="addMessage.js"></script>
+    <script src="chance.min.js"></script>
+    <script src="MasMas.min.js"></script>
+    <script src="battle.js"></script>
+    <script src="project.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
