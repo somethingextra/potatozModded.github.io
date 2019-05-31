@@ -1,4 +1,4 @@
-localStore("potatoz", 0);
+localStore("potatoz", 250);
 localStore("unusedPotatoz", 0);
 localStore("doneMessages", []);
 localStore("patchPrice", 20);
