@@ -1,4 +1,5 @@
 localStore("potatoz", 0);
+localStore("DarkMagic", 0);
 localStore("unusedPotatoz", 0);
 localStore("doneMessages", []);
 localStore("patchPrice", 20);
@@ -69,6 +70,7 @@ $("#self-tabs").hide();
 $("#brain-tab").hide();
 $("#brain").hide();
 $("#buyThoughts").hide();
+$("#GetMagic").hide();
 $('#btnIncreaseIQ').hide();
 $("#projects").hide();
 $("#advancedPotatonomics").hide();
@@ -153,6 +155,9 @@ if (chaplainCatsUnlocked) {
 $("#potatozPlus").click(() => {
     potatoz++;
     unusedPotatoz++;
+});
+$("#GetMagic").click(() => {
+    DarkMagic++;
 });
 $("#btnBuyAPatch").click(() => {
     if (unusedPotatoz >= patchPrice && patches < patchMax) {
@@ -360,6 +365,7 @@ var updateId = setInterval(() => {
     $("#farmAmount").html(`${format(farms)}`);
     $("#farmMax").html(`${format(farmMax)}`);
     $("#buyACat").html(`${format(catPrice)}`);
+    $("#GetMagic").html(`${format(DarkMagic)}`);
     $("#catAmount").html(`Cats: ${format(availableCats.A())} / ${format(cats.A())}`);
     $("#eachBoostFarmer").html(`Each farmer cat adds a ${format(farmerBoost*100)}% boost to potato production.`);
     $("#totalBoostFarmer").html(`Total farmer cat boost provided: ${format((farmerBoost*farmers*100).A())}%`);
@@ -551,7 +557,9 @@ function reset() {
     $("#projects").hide();
     $("#self-tabs").hide();
     $('#buyThoughts').hide();
+    $('GetMagic').hide();
     potatoz = 0;
+    DarkMagic = 0;
     unusedPotatoz = 0;
     doneMessages = [];
     patchPrice = 20;
